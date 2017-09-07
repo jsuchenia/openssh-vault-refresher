@@ -3,6 +3,8 @@ SSH Authentication using CA certificates is a very rare, but powerfull soution. 
 
  You can set-up it in your `.bash_login` script and certificates will be refreshed when they are almost expired. I wrote it to check expiration parameters of SSH certificates as described in [OpenSSH documentation](https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.certkeys) to avoid unnecessary network traffic and Vault access requirement
 
+ There is a build-in solution in a vault CLI and [Vault SSH agent](https://github.com/hashicorp/vault-ssh-agent) however they support OTP only
+
 ### Overview
 When using Immutable Infrastructure concept you should avoid changes (or they are even not possible without re-deploy). Using Vault you can grant access to 'infrastructure' role in your organization and users can generate certificates that allows them to log-in to all your systems within provided timeframe and limits (username, hosts, command). On a machine there will be still the same CA certificate without any changes. All you have to do is to obtain a valid certificate from a CA (in this case maintained by Vault). Since 2010 OpenSSH project contains a support for CA certificates but from my observation they are rarely used.
 
